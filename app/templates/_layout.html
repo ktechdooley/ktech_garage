@@ -1,45 +1,104 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% block title %}kTech{% endblock %}</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/theme.css') }}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-
-  {% include "_topbar.html" %}
-
-  <div class="app-shell">
-    <aside class="sidebar">
-      <nav class="nav">
-        <a class="nav-item" href="{{ url_for('main.dashboard') }}">Dashboard</a>
-
-        <div class="nav-group">Core</div>
-        <a class="nav-item" href="#">Customer Manager</a>
-        <a class="nav-item" href="#">Vehicle Lookup</a>
-        <a class="nav-item" href="#">Book / Manage Jobs</a>
-
-        <div class="nav-group">Finance</div>
-        <a class="nav-item" href="#">Invoices In / Out</a>
-        <a class="nav-item" href="#">Reports & Exports</a>
-
-        <div class="nav-group">Operations</div>
-        <a class="nav-item" href="#">Suppliers</a>
-        <a class="nav-item" href="#">Stock & Parts</a>
-        <a class="nav-item" href="#">Price List</a>
-        <a class="nav-item" href="#">ECU Programming & Calibrations</a>
-        <a class="nav-item" href="#">Vehicle Stock</a>
-
-        <div style="flex:1"></div>
-        <a class="nav-item" href="{{ url_for('auth.logout') }}">Logout</a>
-      </nav>
-    </aside>
-
-    <main class="content">
-      {% block content %}{% endblock %}
-    </main>
-  </div>
-
+    <div class="d-flex" id="wrapper">
+        <nav class="bg-dark text-white p-3" id="sidebar-wrapper" style="min-width: 260px;">
+            <div class="sidebar-heading text-uppercase small text-muted">Navigation</div>
+            <ul class="nav flex-column">
+                <li class="nav-item mb-2">
+                    <a class="nav-link text-white" href="{{ url_for('main.dashboard') }}">🏠 Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <div class="fw-bold text-uppercase small text-muted mt-3">👥 Customers</div>
+                    <ul class="nav flex-column ms-2">
+                        <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('customers.customers_list') }}">Customers</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('customers.vehicles') }}">Vehicles</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('customers.vehicle_history') }}">Vehicle History</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <div class="fw-bold text-uppercase small text-muted mt-3">🔧 Workshop</div>
+                    <ul class="nav flex-column ms-2">
+                        <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('workshop.jobs') }}">Jobs</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('workshop.labour_mileage') }}">Labour &amp; Mileage</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('workshop.service_history') }}">Service History</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <div class="fw-bold text-uppercase small text-muted mt-3">🧠 ECU Programming &amp; Calibration</div>
+                    <ul class="nav flex-column ms-2">
+                        <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('ecu.ecu_jobs') }}">ECU Jobs</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('ecu.ecu_knowledge_base') }}">ECU Knowledge Base</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('ecu.dyno_reports') }}">Dyno Reports</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('ecu.file_archive') }}">File Archive</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <div class="fw-bold text-uppercase small text-muted mt-3">🚗 Vehicle Stock</div>
+                    <ul class="nav flex-column ms-2">
+                        <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('vehicle_stock.stock_vehicles') }}">Stock Vehicles</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('vehicle_stock.prep_jobs') }}">Prep Jobs</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('vehicle_stock.external_costs') }}">External Costs</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('vehicle_stock.profit_analysis') }}">Profit Analysis</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <div class="fw-bold text-uppercase small text-muted mt-3">📦 Inventory &amp; Parts</div>
+                    <ul class="nav flex-column ms-2">
+                        <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('inventory.stock_items') }}">Stock Items</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('inventory.services') }}">Services</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('inventory.price_list') }}">Price List</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <div class="fw-bold text-uppercase small text-muted mt-3">🧾 Invoicing</div>
+                    <ul class="nav flex-column ms-2">
+                        <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('invoicing.sales_invoices') }}">Sales Invoices (Money In)</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('invoicing.purchase_invoices') }}">Purchase Invoices (Money Out)</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <div class="fw-bold text-uppercase small text-muted mt-3">🏭 Suppliers</div>
+                    <ul class="nav flex-column ms-2">
+                        <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('suppliers.suppliers_list') }}">Suppliers</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('suppliers.contacts_reps') }}">Contacts / Reps</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <div class="fw-bold text-uppercase small text-muted mt-3">📊 Reports</div>
+                    <ul class="nav flex-column ms-2">
+                        <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('reports.vat') }}">VAT</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('reports.profit_loss') }}">Profit &amp; Loss</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('reports.ecu_performance_stats') }}">ECU Performance Stats</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <div class="fw-bold text-uppercase small text-muted mt-3">⚙️ Settings</div>
+                    <ul class="nav flex-column ms-2">
+                        <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('settings.business_info') }}">Business Info</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('settings.vat_labour_rates') }}">VAT &amp; Labour Rates</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('settings.users_security') }}">Users &amp; Security</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('settings.backup_restore') }}">Backup &amp; Restore</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div class="flex-fill">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                {% include '_topbar.html' %}
+            </nav>
+            <main role="main" class="container-fluid py-4">
+                {% block content %}{% endblock %}
+            </main>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
 </body>
 </html>
