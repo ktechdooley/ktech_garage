@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login - kTech</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/theme.css') }}">
+</head>
+<body>
+  <div style="min-height:100vh;display:grid;place-items:center;padding:24px;">
+    <div class="card" style="width:min(520px,100%);">
+      <img src="{{ url_for('static', filename='img/logo.png') }}" style="width:72px;height:72px;object-fit:contain" alt="kTech logo">
+      <h1 style="margin:10px 0 0;">kTech Dashboard</h1>
+      <p style="color:var(--text-muted);margin-top:4px;">Login required</p>
+
+      {% with msgs = get_flashed_messages(with_categories=true) %}
+        {% if msgs %}
+          <div style="margin:10px 0;">
+            {% for cat,msg in msgs %}
+              <div class="card" style="border-color:#ff5252;background:rgba(255,82,82,0.06);">{{ msg }}</div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
+
+      <form method="post">
+        <label style="display:block;margin:10px 0 6px;color:var(--text-muted);font-size:12px;text-transform:uppercase;">Username</label>
+        <input name="username" required>
+
+        <label style="display:block;margin:10px 0 6px;color:var(--text-muted);font-size:12px;text-transform:uppercase;">Password</label>
+        <input name="password" type="password" required>
+
+        <label style="display:flex;gap:8px;align-items:center;margin-top:10px;color:var(--text-muted);">
+          <input type="checkbox" name="remember"> Remember me
+        </label>
+
+        <button type="submit" style="margin-top:12px;">Log in</button>
+      </form>
+
+      <p style="color:var(--text-muted);font-size:12px;margin-top:10px;">Default: admin / ktech123</p>
+    </div>
+  </div>
+</body>
+</html>

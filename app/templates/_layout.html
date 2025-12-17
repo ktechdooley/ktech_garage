@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}kTech{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/theme.css') }}">
+</head>
+<body>
+
+  {% include "_topbar.html" %}
+
+  <div class="app-shell">
+    <aside class="sidebar">
+      <nav class="nav">
+        <a class="nav-item" href="{{ url_for('main.dashboard') }}">Dashboard</a>
+
+        <div class="nav-group">Core</div>
+        <a class="nav-item" href="#">Customer Manager</a>
+        <a class="nav-item" href="#">Vehicle Lookup</a>
+        <a class="nav-item" href="#">Book / Manage Jobs</a>
+
+        <div class="nav-group">Finance</div>
+        <a class="nav-item" href="#">Invoices In / Out</a>
+        <a class="nav-item" href="#">Reports & Exports</a>
+
+        <div class="nav-group">Operations</div>
+        <a class="nav-item" href="#">Suppliers</a>
+        <a class="nav-item" href="#">Stock & Parts</a>
+        <a class="nav-item" href="#">Price List</a>
+        <a class="nav-item" href="#">ECU Programming & Calibrations</a>
+        <a class="nav-item" href="#">Vehicle Stock</a>
+
+        <div style="flex:1"></div>
+        <a class="nav-item" href="{{ url_for('auth.logout') }}">Logout</a>
+      </nav>
+    </aside>
+
+    <main class="content">
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+
+</body>
+</html>

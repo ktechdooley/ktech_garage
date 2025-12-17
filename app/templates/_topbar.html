@@ -1,0 +1,21 @@
+<header class="topbar">
+  <div class="topbar-left">
+    <img src="{{ url_for('static', filename='img/logo.png') }}" class="topbar-logo" alt="kTech logo">
+    <div class="topbar-brand">
+      <div class="topbar-title">{{ business.name }}</div>
+      <div class="topbar-subtitle">{{ business.tagline }}</div>
+      <div class="topbar-meta">
+        📍 {{ business.location }} &nbsp;&nbsp; 📞 {{ business.phone }} &nbsp;&nbsp; ✉️ {{ business.email }}
+      </div>
+    </div>
+  </div>
+
+  <div class="topbar-right">
+    {% if session.get('user_id') %}
+      <form class="topbar-search" action="{{ url_for('main.quick_search') }}" method="get">
+        <input type="text" name="q" placeholder="Quick reg search..." />
+      </form>
+      <a class="topbar-link" href="{{ url_for('auth.logout') }}">Logout</a>
+    {% endif %}
+  </div>
+</header>
