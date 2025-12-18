@@ -1,18 +1,22 @@
 from flask import Blueprint, render_template
 
+from .auth import login_required
+
 bp = Blueprint("customers", __name__, url_prefix="/customers")
 
 
-@bp.route("/customers")
-def customers_list():
+@bp.route("/")
+@login_required
+def index():
     return render_template(
-        "customers/customers.html",
+        "customers/index.html",
         title="Customers",
         subtitle="Customers",
     )
 
 
 @bp.route("/vehicles")
+@login_required
 def vehicles():
     return render_template(
         "customers/vehicles.html",
@@ -22,6 +26,7 @@ def vehicles():
 
 
 @bp.route("/vehicle-history")
+@login_required
 def vehicle_history():
     return render_template(
         "customers/vehicle_history.html",

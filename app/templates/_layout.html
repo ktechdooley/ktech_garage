@@ -18,7 +18,7 @@
                 <li class="nav-item">
                     <div class="fw-bold text-uppercase small text-muted mt-3">👥 Customers</div>
                     <ul class="nav flex-column ms-2">
-                        <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('customers.customers_list') }}">Customers</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('customers.index') }}">Customers</a></li>
                         <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('customers.vehicles') }}">Vehicles</a></li>
                         <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('customers.vehicle_history') }}">Vehicle History</a></li>
                     </ul>
@@ -35,7 +35,7 @@
                     <div class="fw-bold text-uppercase small text-muted mt-3">🧠 ECU Programming &amp; Calibration</div>
                     <ul class="nav flex-column ms-2">
                         <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('ecu.ecu_jobs') }}">ECU Jobs</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('ecu.ecu_knowledge_base') }}">ECU Knowledge Base</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('ecu.knowledge_base') }}">ECU Knowledge Base</a></li>
                         <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('ecu.dyno_reports') }}">Dyno Reports</a></li>
                         <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('ecu.file_archive') }}">File Archive</a></li>
                     </ul>
@@ -67,7 +67,7 @@
                 <li class="nav-item">
                     <div class="fw-bold text-uppercase small text-muted mt-3">🏭 Suppliers</div>
                     <ul class="nav flex-column ms-2">
-                        <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('suppliers.suppliers_list') }}">Suppliers</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('suppliers.index') }}">Suppliers</a></li>
                         <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('suppliers.contacts_reps') }}">Contacts / Reps</a></li>
                     </ul>
                 </li>
