@@ -1,16 +1,8 @@
-# kTech Garage Management System
+# kTech Garage Management System (kTech GMS)
 
-Internal garage management system for **kTech Automotive**.
+A local-first, offline garage management system built specifically for kTech Automotive.
 
-## Tech Stack
-- Python
-- Flask
-- SQLite
-- HTML/CSS (custom dark UI)
+This system manages customers, vehicles, jobs, invoices, ECU programming,
+inventory, suppliers, and reporting.
 
-## How to Run (Local)
-```bash
-python -m venv .venv
-source .venv/bin/activate   # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-python run.py
+Refer to COPILOT_INSTRUCTIONS.md for strict AI rules.
